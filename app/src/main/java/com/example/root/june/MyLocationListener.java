@@ -11,13 +11,13 @@ import com.baidu.location.BDAbstractLocationListener;
  */
 
 public class MyLocationListener extends BDAbstractLocationListener{
-    public MyService  myService = null;
+    public MainActivity  mainActivity = null;
     public static String username = null;
     private Handler handler = new Handler();
-    MyLocationListener(MyService myService){
-        Toast.makeText(myService, "MyLocationListener", Toast.LENGTH_SHORT).show();
-        this.myService = myService;
-        SharedPreferences settings = myService.getSharedPreferences("mingmingtang", 0);
+    MyLocationListener(MainActivity mainActivity){
+        Toast.makeText(mainActivity, "MyLocationListener", Toast.LENGTH_SHORT).show();
+        this.mainActivity = mainActivity;
+        SharedPreferences settings = mainActivity.getSharedPreferences("mingmingtang", 0);
         this.username = settings.getString("username", null);
     }
 
@@ -27,7 +27,7 @@ public class MyLocationListener extends BDAbstractLocationListener{
         //以下只列举部分获取经纬度相关（常用）的结果信息
         //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
 
-//        Toast.makeText(MyService, "onReceiveLocation", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mainActivity, "onReceiveLocation", Toast.LENGTH_SHORT).show();
 
         double latitude = location.getLatitude();    //获取纬度信息
         double longitude = location.getLongitude();    //获取经度信息

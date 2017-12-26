@@ -12,11 +12,10 @@ import android.widget.Toast;
 public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "Intent Detected.", Toast.LENGTH_LONG).show();
-        if(MyService.service == null) {
-            Intent service = new Intent(context, MyService.class);
-            MyService.service = service;
-            context.startService(service);
+        System.out.println("onReceive");
+        if (!MainActivity.mLocationClient.isStarted()) {
+            MainActivity.mLocationClient.start();
+            System.out.println("restart");
         }
     }
 }
